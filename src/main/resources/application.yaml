@@ -1,6 +1,12 @@
 spring:
-application:
-  name: long-ai-agent
+  application:
+    name: long-ai-agent
+  ai:
+    dashscope:
+      api-key: "sk-c3a2fd26e3ca4e698b631b554902c93a"
+      chat:
+        options:
+          model: qwen-plus
 server:
   port: 8080
   servlet:
