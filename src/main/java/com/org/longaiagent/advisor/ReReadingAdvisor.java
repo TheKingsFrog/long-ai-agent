@@ -27,8 +27,6 @@ public class ReReadingAdvisor implements CallAroundAdvisor, StreamAroundAdvisor 
         ).userParams(advisedUserParams)
                 .build();
 
-
-
     }
 
     @Override

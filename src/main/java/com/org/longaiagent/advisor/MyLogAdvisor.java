@@ -1,10 +1,17 @@
 package com.org.longaiagent.advisor;
 
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.advisor.api.*;
 import org.springframework.ai.chat.model.MessageAggregator;
 import reactor.core.publisher.Flux;
 
+/**
+ * 	lombok 依赖引入 ≠ 注解处理器生效
+ * 	•	annotationProcessorPaths 要写对
+ * 	•	不要在 spring-boot-maven-plugin 里排除 Lombok
+ * 	•	IDEA 也要开启 Annotation Processing
+ */
 @Slf4j
 public class MyLogAdvisor implements CallAroundAdvisor, StreamAroundAdvisor {
 

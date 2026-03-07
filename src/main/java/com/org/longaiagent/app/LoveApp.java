@@ -2,6 +2,7 @@ package com.org.longaiagent.app;
 
 import com.org.longaiagent.advisor.MyLogAdvisor;
 import com.org.longaiagent.advisor.ReReadingAdvisor;
+import com.org.longaiagent.chatmemory.FileBasedChatMemory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
@@ -28,8 +29,14 @@ public class LoveApp {
             "引导用户详述事情经过、对方反应及自身想法，以便给出专属解决方案。";
 
     public LoveApp(ChatModel dashscopeChatModel) {
+
+        // 初始化基于文件的对话记忆
+        String fileDir = System.getProperty("user.dir") + "/tmp/chat-memory";
+
+        ChatMemory chatMemory = new FileBasedChatMemory(fileDir);
+
         // 初始化基于内存的记忆
-        ChatMemory chatMemory = new InMemoryChatMemory();
+//        ChatMemory chatMemory = new InMemoryChatMemory();
         chatClient = ChatClient.builder(dashscopeChatModel)
                 .defaultSystem(SYSTEM_PROMPT)
                 .defaultAdvisors(
